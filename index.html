@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>𝗖𝗵𝗮𝗿𝗮𝗻'𝘀 𝗽𝗼𝗿𝘁𝗳𝗼𝗹𝗶𝗼</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="portpic.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="circle">
+        <div class="dot"></div>
+        <span id="name-loader">C</span>
+      </div>
+      <div class="loading-text">Loading</div>
+      <div class="loading-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+
+    <!-- Three.js Canvas -->
+    <canvas id="three-canvas"></canvas>
+    
+    <!-- Settings Button -->
+    <div class="settings-btn" id="settingsBtn">
+        <i class="fas fa-cog"></i>
+    </div>
+    
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-header">
+            <h3 class="settings-title">Settings</h3>
+            <div class="close-settings" id="closeSettings">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        
+        <div class="settings-group">
+            <h4 class="settings-group-title">Theme Options</h4>
+            <div class="theme-options">
+                <div class="theme-option theme-dark active" data-theme="dark"></div>
+                <div class="theme-option theme-light" data-theme="light"></div>
+                <div class="theme-option theme-blue" data-theme="blue"></div>
+                <div class="theme-option theme-purple" data-theme="purple"></div>
+            </div>
+        </div>
+        
+        <div class="settings-group">
+            <h4 class="settings-group-title">Preferences</h4>
+            <div class="toggle-label">
+                <span class="toggle-text">Dark Mode</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="toggle-label">
+                <span class="toggle-text">Sound Effects</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="soundToggle" checked>
+                    <span class="slider"></span>
+   
+                </label>
+         
+            </div>
+            <!-- QR Code Button + Popup (inline CSS only) -->
+<div
+  style="position:relative;display:inline-block;"
+  onmouseover="this.querySelector('div').style.display='block';"
+  onmouseout="this.querySelector('div').style.display='none';"
+>
+  <!-- Button -->
+  <button
+    style="background:#1a1a1a;color:#fff;border:none;padding:8px 12px;
+           font-size:14px;border-radius:8px;cursor:pointer;display:flex;
+           align-items:center;gap:6px;"
+    onclick="this.nextElementSibling.style.display='none';"
+  >
+    <i class="fas fa-qrcode"></i> Show&nbsp;QR
+  </button>
+
+  <!-- Popup -->
+  <div
+    style="display:none;position:absolute;top:105%;left:0;background:#fff;
+           padding:10px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.2);"
+  >
+    <img
+      src="qrcode.png"
+      alt="QR Code"
+      style="width:120px;height:120px;display:block;"
+    >
+  </div>
+</div>
+
+        </div>
+    </div>
+    
+    <!-- Floating Elements -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    
+    <!-- Navigation -->
+    <nav> 
+        <a href="#" class="logo" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: inherit;">
+            <img src="charan pic.jpg" alt="Logo" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover;">
+            <span style="font-weight: bold; margin-left: 5px;">CHARAN<span style="font-weight: normal; margin-left: 4px;">BALAJI</span></span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#home"><i class="fas fa-house"></i> Home</a>
+            <a href="#about"><i class="fas fa-user-circle"></i> About</a>
+            <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+            <a href="#skills"><i class="fas fa-tools"></i> Skills</a>
+            <a href="#projects"><i class="fas fa-diagram-project"></i> Projects</a>
+            <a href="#certificates"><i class="fas fa-certificate"></i> Certificates</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+    
+    <!-- Home Section -->
+    <section id="home">
+        <div class="hero-content fade-in">
+            <h1 class="delay-1">Hi, I'm CHARAN BALAJI</h1>
+            <h2 class="delay-2"> Web Developer & UI/UX Designer</h2>
+            <p class="delay-3">I create immersive digital experiences that blend cutting-edge technology with stunning design to deliver exceptional user experiences.</p>
+            <a href="#projects" class="cta-button delay-4">
+            <img src="work.png" alt="CV Icon" style="height: 24px; vertical-align: middle; margin-right: 8px;">View My Work
+            </a>
+            <a href="cv.jpg" target="_blank" class="cta-button delay-4">
+                <img src="cvicon.png" alt="CV Icon" style="height: 24px; vertical-align: middle; margin-right: 8px;">
+                View CV
+            </a>
+            <div class="social-icons delay-4" style="align-items: center;">
+                <a href="https://github.com/charanbalaji2005"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/n-charan-balaji-0b36b7336/"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/charanbalajicharan"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="hero-image fade-in delay-3">
+            <img src="charan pic.jpg" alt="CHARAN BALAJI">
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="parallax">
+        <h2 class="section-title fade-in">About Me</h2>
+        <div class="about-container">
+            <div class="about-image fade-in">
+                <img src="charan pic.jpg" alt="CHARAN BALAJI">
+            </div>
+            <div class="about-content fade-in delay-1">
+                <h3>Who Am I?</h3>
+                <p>I'm a passionate web developer with over few months of experience creating digital experiences that matter. My journey in tech started when I was 18, building my first website in my college.</p>
+                <p>I specialized in front-end development with React and JavaScript, but I'm also proficient in back-end technologies like Node.js and PHP. My design background allows me to bridge the gap between aesthetics and functionality.</p>
+                
+                <div class="about-details">
+                    <div class="detail-item">
+                        <i class="fas fa-user-tie"></i>
+                        <div class="detail-text">
+                            <h4>Name</h4>
+                            <p>NEELAMPALLI CHARAN BALAJI</p>
+                        </div>
+                    </div>
+                  
+                    <!-- Date of Birth -->
+                    <div class="detail-item">
+                        <i class="fas fa-birthday-cake orange-icon"></i>
+                        <div class="detail-text">
+                            <h4>Date of Birth</h4>
+                            <p>07/05/2006</p>
+                        </div>
+                    </div>
+
+                    <!-- Age -->
+                    <div class="detail-item">
+                        <i class="fas fa-hourglass-half orange-icon"></i>
+                        <div class="detail-text">
+                            <h4>Age</h4>
+                            <p>19 Years</p>
+                        </div>
+                    </div>
+
+                    <!-- Degree -->
+                    <div class="detail-item">
+                        <i class="fas fa-user-graduate orange-icon"></i>
+                        <div class="detail-text">
+                            <h4>Degree</h4>
+                            <p>Bachelor of Computer Science</p>
+                        </div>
+                    </div>
+                    <!-- Instagram -->
+<div class="detail-item">
+    <i class="fab fa-instagram orange-icon"></i>
+    <div class="detail-text">
+        <h4>Instagram</h4>
+        <div class="instagram-section">
+            <button onclick="toggleQRCode()" class="qr-toggle-button">
+                Instagram QR Code
+            </button>
+
+            <div id="qrCodeContainer" class="qr-code-container">
+                <span>@charanbalajicharan</span><br>
+                <a href="https://www.instagram.com/charanbalajicharan" target="_blank">
+                    <img 
+                        src="insta.png" 
+                        alt="Instagram QR Code" 
+                        class="qr-image"
+                    >
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- LinkedIn -->
+<div class="detail-item">
+    <i class="fab fa-linkedin orange-icon"></i>
+    <div class="detail-text">
+        <h4>LinkedIn</h4>
+        <p>
+           <a href="https://www.linkedin.com/in/n-charan-balaji-0b36b7336/" target="_blank"
+               style="padding: 5px 10px; background-color: #24292e; color: white; text-decoration: none; border-radius: 4px; font-size: 13px; font-weight: bold; display: inline-block;">
+                linkedin.com/charanbalajicharan
+            </a>
+        </p>
+    </div>
+</div>
+<!-- GitHub -->
+<div class="detail-item">
+    <i class="fab fa-github orange-icon"></i>
+    <div class="detail-text">
+        <h4>GitHub</h4>
+        <p>
+            <a href="https://github.com/charanbalaji2005" target="_blank"
+               style="padding: 5px 10px; background-color: #24292e; color: white; text-decoration: none; border-radius: 4px; font-size: 13px; font-weight: bold; display: inline-block;">
+                github.com/charanbalajicharan
+            </a>
+        </p>
+    </div>
+</div>
+                    <div class="detail-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="detail-text">
+                            <h4>Email</h4>
+                            <p>charanbalaji_neelampalli@srmap.edu.in</p>
+                        </div>
+                    </div>
+
+<!-- Phone -->
+<div class="detail-item">
+  <i class="fas fa-phone"></i>
+  <div class="detail-text">
+    <h4>Phone</h4>
+    <p>+91 9390701314</p>
+  </div>
+</div>
+
+<!-- Location -->
+<div class="detail-item">
+  <i class="fas fa-map-marker-alt"></i>
+  <div class="detail-text">
+    <h4>Location</h4>
+    <p>Anantapur, Andhra Pradesh, India</p>
+  </div>
+</div>
+<!--Language-->
+<div class="detail-item">
+  <i class="fas fa-language"></i>
+     <div class="detail-text">
+        <h4>Language</h4>
+        <p>English,Telugu</p>
+     </div>
+    </div>
+<!--Hobbies-->
+<div class="detail-item">
+<i class="fas fa-code"></i>        <!-- fa-code -->
+     <div class="detail-text">
+        <h4>Hobbies</h4>
+        <p>Watching more, Learning Modern Technology, Reading Books, Improving coding skills</p>
+     </div>
+    </div>
+
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title fade-in">Education</h2>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2024 - 2028</div>
+                    <h3 class="timeline-title">Bachelor's in Computer Science</h3>
+                    <h4 class="timeline-subtitle">SRMAP University</h4>
+                    <p class="timeline-description">Specialization in Artifical Intelligence And Machine Learning".</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in delay-1">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2022 - 2024</div>
+                    <h3 class="timeline-title">MPC</h3>
+                    <h4 class="timeline-subtitle">Narayana Junior College</h4>
+                    <p class="timeline-description">Graduated with honors.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in delay-2">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2025 - present</div>
+                    <h3 class="timeline-title">Web Development</h3>
+                    <h4 class="timeline-subtitle">General Assembly</h4>
+                    <p class="timeline-description">Intensive program covering front-end and Back-end, with emphasis on modern JavaScript frameworks like, Three,js, Node.js and Express.js.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title fade-in">My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-category fade-in">
+                <h3><i class="fas fa-code"></i> Frontend</h3>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">React.js</span>
+                        <span class="skill-percent">95%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Three.js</span>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">JavaScript</span>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">HTML5 & CSS3</span>
+                        <span class="skill-percent">97%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 97%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category fade-in delay-1">
+                <h3><i class="fas fa-server"></i> Backend</h3>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Node.js and Express.js</span>
+                        <span class="skill-percent">92%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 92%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Python with libraries Pandas, Numpy and matplotlib</span>
+                        <span class="skill-percent">88%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 88%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">SQl And PHP</span>
+                        <span class="skill-percent">95%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">REST APIs </span>
+                        <span class="skill-percent">94%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 94%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category fade-in delay-2">
+                <h3><i class="fas fa-paint-brush"></i> Design</h3>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">UI/UX Design</span>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Canva</span>
+                        <span class="skill-percent">92%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 92%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Figma</span>
+                        <span class="skill-percent">50%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 50%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Bootstrap</span>
+                        <span class="skill-percent">54%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 54%"></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title fade-in">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <img src="pokedex.jpg" alt="Project 1">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">My-Pok-dex-Explorer</h3>
+                    <p class="project-description">An immersive website experience with 3D product visualization Modern UI/UX, and recommendations.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Html</span>
+                        <span class="tech-tag">Three.js</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://charanbalaji2005.github.io/My-Pok-dex-Explorer/"  target ="_blank" class="project-link live">Live Demo</a>
+                        <a href="https://github.com/charanbalaji2005/My-Pok-dex-Explorer?search=1"  target ="_blank" class="project-link code">View Code</a>
+                    </div>
+                </div>
+            </div>
+            
+           
+            
+            <div class="project-card fade-in delay-2">
+                <div class="project-image">
+                    <img src="Coming soon" alt="Project 3">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Interactive Portfolio Builder</h3>
+                    <p class="project-description">A no-code platform for creatives to build interactive portfolios with advanced animations and 3D effects.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">GSAP</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Framer Motion</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link live">Live Demo</a>
+                        <a href="#" class="project-link code">View Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   <!-- Certificates Section -->
+<section id="certificates">
+    <h2 class="section-title fade-in">Certificates</h2>
+    <div class="certificates-container">
+        <div class="certificate-card fade-in">
+            <div class="certificate-image">
+                <img src="simplelearn certificate.jpg" alt="Database Management Certificate">
+            </div>
+            <div class="certificate-content">
+                <h3 class="certificate-title">Database Management</h3>
+                <p class="certificate-issuer">SimpleLearn</p>
+                <span class="certificate-date">Issued June 2025</span>
+                <a href="#cert1" class="view-certificate" data-certificate="cert1">🔍 View Certificate</a>
+            </div>
+        </div>
+        
+        <div class="certificate-card fade-in delay-1">
+            <div class="certificate-image">
+                <img src="linked in.png" alt="Generative AI Certificate">
+            </div>
+            <div class="certificate-content">
+                <h3 class="certificate-title">What is Generative AI</h3>
+                <p class="certificate-issuer">LinkedIn</p>
+                <span class="certificate-date">Issued June 2025</span>
+                <a href="#cert2" class="view-certificate" data-certificate="cert2">🔍 View Certificate</a>
+            </div>
+        </div>
+
+        <div class="certificate-card fade-in delay-2">
+            <div class="certificate-image">
+                <img src="harvardcert.png" alt="Data Science Certificate">
+            </div>
+            <div class="certificate-content">
+                <h3 class="certificate-title">Data Science: Probability</h3>
+                <p class="certificate-issuer">Harvard University</p>
+                <span class="certificate-date">Issued June 2025</span>
+                <a href="#cert3" class="view-certificate" data-certificate="cert3">🔍 View Certificate</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Certificate Modals -->
+<div id="cert1" class="modal">
+    <div class="modal-content">
+        <span class="modal-close"><i class="fas fa-times"></i></span>
+        <img src="simplelearn certificate.jpg" alt="Database Management Certificate" class="modal-image">
+    </div>
+</div>
+
+<div id="cert2" class="modal">
+    <div class="modal-content">
+        <span class="modal-close"><i class="fas fa-times"></i></span>
+        <img src="linked in.png" alt="Generative AI Certificate" class="modal-image">
+    </div>
+</div>
+
+<div id="cert3" class="modal">
+    <div class="modal-content">
+        <span class="modal-close"><i class="fas fa-times"></i></span>
+        <img src="harvardcert.png" alt="Data Science Certificate" class="modal-image">
+    </div>
+</div>
+    
+   <!-- Contact Section -->
+<section id="contact">
+    <div class="contact-container">
+        <div class="contact-left-panel">
+            <h1>Get In Touch</h1>
+            <p class="contact-subtitle">We'd love to hear from you. Fill out the form and we'll get back to you as soon as possible.</p>
+            
+            <div class="contact-icons-container">
+                <div class="contact-icon-circle"><i class="fas fa-envelope"></i></div>
+                <div class="contact-icon-circle"><i class="fas fa-paper-plane"></i></div>
+                <div class="contact-icon-circle"><i class="fas fa-comments"></i></div>
+            </div>
+            
+            <div class="contact-info-group">
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-info-text">
+                        <h3>Location</h3>
+                        <p>Anantapur, Andhra Pradesh, India</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-info-text">
+                        <h3>Phone</h3>
+                        <p>+91 9390701314</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-info-text">
+                        <h3>Email</h3>
+                        <p>charanbalaji_neelampalli@srmap.edu.in</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-social-links">
+                <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/charanbalajicharan" target="_blank" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/n-charan-balaji-0b36b7336/" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/charanbalaji2005" target="_blank" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        
+        <div class="contact-right-panel">
+            <h2 class="contact-form-title">Send us a message</h2>
+            
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="What is this regarding?" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+                </div>
+                
+                <button type="submit" class="contact-submit-btn">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+            
+            <div class="contact-success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i> Your message has been prepared. Please check your email app to send it.
+            </div>
+        </div>
+    </div>
+</section>
+    
+   
+    <!-- Footer -->
+    <footer style="background-color: #0f0f0f; color: #fff; padding: 3rem 1.5rem; text-align: center;">
+        <div class="footer-content" style="max-width: 900px; margin: auto;">
+            <h2 class="footer-title" style="font-size: 2rem; margin-bottom: 1rem;">Let's Work Together</h2>
+            <p style="font-size: 1rem; line-height: 1.6; margin-bottom: 2rem;">
+                I'm always open to discussing product design work or partnership opportunities. Feel free to reach out if you have a project in mind or just want to connect.
+            </p>
+            
+            <div class="footer-links" style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem;">
+                <a href="https://github.com/charanbalaji2005" style="color: #fff; font-size: 1.5rem; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/n-charan-balaji-0b36b7336/" style="color: #fff; font-size: 1.5rem; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" style="color: #fff; font-size: 1.5rem; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: #fff; font-size: 1.5rem; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'"><i class="fab fa-behance"></i></a>
+            </div>
+
+            <p style="font-size: 0.9rem; color: #888;">© <span id="year"></span> CHARAN BALAJI. All rights reserved.</p>
+        </div>
+    </footer>
+    
+   <!-- Floating WhatsApp Button -->
+<a href="https://wa.me/919390701314?text=Hello%20Charan!%20I%20just%20visited%20your%20website."
+   class="floating-btn whatsapp" aria-label="Chat on WhatsApp" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Scroll‑to‑Top Button -->
+<button class="floating-btn scroll-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+
+    
+    <!-- Audio Elements -->
+    <audio id="clickSound" src="soundeffect.wav" preload="click"></audio>
+    <audio id="hoverSound" src="#" preload="click"></audio>
+    <audio id="successSound" src="#" preload="click"></audio>
+    <audio id="toggleSound" src="#" preload="click"></audio>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
