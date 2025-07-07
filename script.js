@@ -470,3 +470,20 @@ function toggleQRCode() {
     scrollBtn.classList.toggle('show', window.scrollY > 400);
   });
   
+  // JavaScript -->
+
+  document.getElementById('downloadQR').addEventListener('click', function () {
+    // Path to the QR image and the desired filename
+    const fileURL = 'qrcode.png';
+    const filename = 'my-instagram-qr.png';
+
+    // Create a temporary hidden <a> tag
+    const link = document.createElement('a');
+    link.href = fileURL;
+    link.download = filename;
+    document.body.appendChild(link);
+
+    // Trigger the download, then clean up
+    link.click();
+    document.body.removeChild(link);
+  });
