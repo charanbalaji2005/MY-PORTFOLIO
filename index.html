@@ -11,6 +11,8 @@
     <link rel="icon" href="portpic.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
 
 </head>
@@ -72,38 +74,47 @@
                 </label>
          
             </div>
-            <!-- QR Code Button + Popup (inline CSS only) -->
-<div
-  style="position:relative;display:inline-block;"
-  onmouseover="this.querySelector('div').style.display='block';"
-  onmouseout="this.querySelector('div').style.display='none';"
->
-  <!-- Button -->
+      <!-- QR Code Toggle & JS Download (Inline CSS + JS) -->
+<div style="position:relative;display:inline-block;">
+  <!-- Toggle Button -->
   <button
     style="background:#1a1a1a;color:#fff;border:none;padding:8px 12px;
            font-size:14px;border-radius:8px;cursor:pointer;display:flex;
            align-items:center;gap:6px;"
-    onclick="this.nextElementSibling.style.display='none';"
+    onclick="
+      const popup = this.nextElementSibling;
+      popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+    "
   >
     <i class="fas fa-qrcode"></i> Show&nbsp;QR
   </button>
 
-  <!-- Popup -->
+  <!-- Popup Container -->
   <div
     style="display:none;position:absolute;top:105%;left:0;background:#fff;
-           padding:10px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.2);"
+           padding:12px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.2);z-index:1000;"
   >
+    <!-- QR Code Image -->
     <img
       src="qrcode.png"
       alt="QR Code"
-      style="width:120px;height:120px;display:block;"
+      style="width:140px;height:140px;display:block;margin-bottom:10px;"
     >
+
+    <!-- Download Button (handled by JS) -->
+    <button
+      id="downloadQR"
+      style="display:inline-block;background:#1a1a1a;color:#fff;
+             font-size:13px;border:none;border-radius:8px;padding:6px 14px;
+             cursor:pointer;text-align:center;width:100%;"
+    >
+      <i class="fas fa-download"></i>&nbsp;Download&nbsp;QR
+    </button>
   </div>
 </div>
-
         </div>
     </div>
-    
+
     <!-- Floating Elements -->
     <div class="floating-element"></div>
     <div class="floating-element"></div>
